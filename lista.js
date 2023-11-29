@@ -1,3 +1,7 @@
 const lista = ["Um", "Dois", "Três"];
 
-export function getLista
+export function getLista(){
+    return lista;
+}
+
+//export {getLista};
