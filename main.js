@@ -1,37 +1,40 @@
-// main.js
-import { adicionarNaLista, limparLista } from "./lista.js";
-import { getLista } from "./lista.js"
-// Passo 1 - Ache os elementos importantes
-const pEntrada = document.querySelector('#entrada');
-const olSaida = document.querySelector('#itens');
-const brnAdicionar = document.querySelector('#adicionar');
-const btnLimpar = document.querySelector('#limpar');
+import{ getLista,adicionaNaLista,limpaLista} from"./lista.js";
+const pEntrada=document.querySelector("#entrada");
+const btnAdicionar=document.querySelector("#adicionar");
+const btnLimpar=document.querySelector("#limpar");
+const olItens=document.querySelector("#itens");
 
-btnLimpar.addEventListener('click, limparElementosDaLista');
-btnAdicionar.addEventListener('click', criaElementoNaLista);
+atualizarListaOrdenada();
 
-atualizarItensdDeLista();
+btnAdicionar.addEventListener("click",adicionaItemDeEntrada); 
 
-function criaElementoNaLista() {
-    const texto = pEntrada.textContent;
-    adicionarNaLista(texto);
-    atualizarItensdDeLista();
-    pEntrada.textContent="";
-    pEntrada.focus();
+btnLimpar.addEventListener("click",limpaListaOrdenada);
+
+function limpaListaOrdenada(){
+    limpaLista();
+    atualizarListaOrdenada();
 }
-    function limparElementosDaLista(){
-        limparLista();
-        atualizarItensdDeLista();
+
+function adicionaItemDeEntrada(){
+    const valor = pEntrada.textContent;
+    adicionaNaLista(valor);
+    pEntrada.textContent = "";
+    atualizarListaOrdenada();
+}
+
+function atualizarListaOrdenada(){
+const lista=getLista();
+olItens.innerHTML="";
+    for(let i=0;i< lista.length;i++){
+        adicionaElementoNaListaOrdenada(lista[i]);
     }
+}
 
 
-function atualizarItensdDeLista(){
-    olSaida.innerHTML = "";
-    const lista = getLista();
-    for (let i=0; i < getLista.length; i++){
-        const item = lista[i];
-        const li = document.createElement('li');
-        li.textContent = item;
-        document.body.appendChild(li);
-    }
+
+function adicionaElementoNaListaOrdenada(texto){
+
+    const li=document.createElement("li");
+    li.textContent=texto;
+    olItens.appendChild(li);
 }
