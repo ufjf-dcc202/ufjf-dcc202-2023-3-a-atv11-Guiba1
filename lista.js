@@ -1,14 +1,24 @@
-const lista = ["Um", "Dois", "Três"];
+const lista=[
+    "Um",
+    "Dois",
+    "Três"
+];
 
-export function getLista(){
-    return lista;
+function getLista(){
+return lista;
 }
 
-export function limparLista(){
+function adicionaNaLista(item){
+    lista.push(item);
+}
+
+function removeDaLista(posicao){
+    lista.splice(posicao,1);
+}
+
+function limpaLista(){
     lista.splice(0);
 }
 
-export function adicionarNaLista(novoItem){
-    lista.push(novoItem);
-}
-//export {getLista};
+
+export{getLista, removeDaLista,limpaLista,adicionaNaLista};
